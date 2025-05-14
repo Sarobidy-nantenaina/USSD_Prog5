@@ -16,6 +16,6 @@ const codeMenu = () => {
         }
         rl.close();
     });
-}
+};
 
 codeMenu();
