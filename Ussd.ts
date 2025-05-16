@@ -62,7 +62,7 @@ const menuYas = () => {
                 break;
             case '0':
                 console.log('Page suivante sélectionnée');
-                suivanteMenu();
+                suivanteMenuYas();
                 break;
             case '00':
                 console.log('Quitter...');
@@ -76,7 +76,7 @@ const menuYas = () => {
     });
 };
 
-const suivanteMenu = () => {
+const suivanteMenuYas = () => {
     const rl = createReadlineInterface();
     console.log('8. Mon identité');
     console.log('9. Configurer mon mobile');
@@ -87,11 +87,11 @@ const suivanteMenu = () => {
         switch (choix) {
             case '8':
                 console.log('Mon identité sélectionné');
-                suivanteMenu();
+                suivanteMenuYas();
                 break;
             case '9':
                 console.log('Configurer mon mobile sélectionné');
-                suivanteMenu();
+                suivanteMenuYas();
                 break;
             case '0':
                 console.log('Page précédente sélectionnée');
@@ -103,7 +103,7 @@ const suivanteMenu = () => {
                 return;
             default:
                 console.log('Choix invalide, veuillez réessayer.');
-                suivanteMenu();
+                suivanteMenuYas();
                 break;
         }
     }); 
@@ -111,7 +111,7 @@ const suivanteMenu = () => {
 
 const mvolaMenu = () => {
     const rl = createReadlineInterface();
-    console.log(' MVOLA ---');
+    console.log(' MVOLA');
     console.log('1. Acheter Credit ou Offre Yas');
     console.log('2. transferer argent (vers toute destination)');
     console.log('3. MVOLA Credit ou Epargne');
@@ -139,7 +139,7 @@ const mvolaMenu = () => {
                 break;
             case '#':
                 console.log('Page suivante');
-                suivanteMenu();
+                mvolaMenuSuivante();
                 break;
             case '00':
                 console.log('Quitter...');
@@ -151,6 +151,57 @@ const mvolaMenu = () => {
                 break;
         }    
     });
+};
+
+const mvolaMenuSuivante = () => {
+    const rl = createReadlineInterface();
+    console.log(' MVOLA');
+    console.log('5. Paiement de Facture & Partenaire');
+    console.log('6. Mon Compte');
+    console.log('7. Recevoir de l\'argent');
+    console.log('8. Banque et Micro-finances');
+    console.log('*. Page precedente');
+    console.log('**. Menu principal');
+    console.log('00. Quitter');
+
+
+    rl.question('Entrez votre choix : ', (choix) => {
+        switch (choix) {
+            case '5':
+                console.log('Paiement de Facture & Partenaire');
+                mvolaMenuSuivante();
+                break;
+            case '6':
+                console.log('Mon Compte');
+                mvolaMenuSuivante();
+                break;
+            case '7':
+                console.log('Recevoir de l\'argent');
+                mvolaMenuSuivante();
+                break;
+            case '8':
+                console.log('Banque et Micro-finances');
+                mvolaMenuSuivante();
+                break;
+            case '*':
+                console.log('Page precedente');                
+                mvolaMenu();
+                break;
+            case '**':
+                console.log('Menu principal');
+                menuYas();
+                break;
+            case '00':
+                console.log('Quitter...');
+                rl.close();
+                return;
+            default:
+                console.log('Choix invalide, veuillez réessayer.');
+                mvolaMenuSuivante();
+                break;
+        }    
+    });
+    
 };
 
 codeMenu();
