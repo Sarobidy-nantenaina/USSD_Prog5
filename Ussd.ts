@@ -62,6 +62,7 @@ const menuYas = () => {
                 break;
             case '0':
                 console.log('Page suivante sélectionnée');
+                suivanteMenu();
                 break;
             case '00':
                 console.log('Quitter...');
@@ -73,6 +74,39 @@ const menuYas = () => {
                 break;
         }
     });
+};
+
+const suivanteMenu = () => {
+    const rl = createReadlineInterface();
+    console.log('8. Mon identité');
+    console.log('9. Configurer mon mobile');
+    console.log('0. Page precedente');
+    console.log('00. Quitter');
+
+    rl.question('Entrez votre choix : ', (choix) => {
+        switch (choix) {
+            case '8':
+                console.log('Mon identité sélectionné');
+                suivanteMenu();
+                break;
+            case '9':
+                console.log('Configurer mon mobile sélectionné');
+                suivanteMenu();
+                break;
+            case '0':
+                console.log('Page précédente sélectionnée');
+                menuYas();
+                break;
+            case '00':
+                console.log('Quitter...');
+                rl.close();
+                return;
+            default:
+                console.log('Choix invalide, veuillez réessayer.');
+                suivanteMenu();
+                break;
+        }
+    }); 
 };
 
 codeMenu();
