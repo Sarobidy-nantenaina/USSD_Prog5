@@ -34,8 +34,8 @@ const menuYas = () => {
     rl.question('Entrez votre choix : ', (choix) => {
         switch (choix) {
             case '1':
-                console.log('MVOLA sélectionné');
-                 menuYas();
+                console.log('MVOLA');
+                mvolaMenu();
                 break;
             case '2':
                 console.log('Rappelle-moi sélectionné');
@@ -107,6 +107,50 @@ const suivanteMenu = () => {
                 break;
         }
     }); 
+};
+
+const mvolaMenu = () => {
+    const rl = createReadlineInterface();
+    console.log(' MVOLA ---');
+    console.log('1. Acheter Credit ou Offre Yas');
+    console.log('2. transferer argent (vers toute destination)');
+    console.log('3. MVOLA Credit ou Epargne');
+    console.log('4. Retraite d\'argent');
+    console.log('#. Page suivante');
+    console.log('00. Quitter');
+
+    rl.question('Entrez votre choix : ', (choix) => {
+        switch (choix) {
+            case '1':
+                console.log('Acheter Credit ou Offre Yas');
+                mvolaMenu();
+                break;
+            case '2':
+                console.log('transferer argent (vers toute destination)');
+                mvolaMenu();
+                break;
+            case '3':
+                console.log('MVOLA Credit ou Epargne');
+                mvolaMenu();
+                break;
+            case '4':
+                console.log('Retraite d\'argent');
+                mvolaMenu();
+                break;
+            case '#':
+                console.log('Page suivante');
+                suivanteMenu();
+                break;
+            case '00':
+                console.log('Quitter...');
+                rl.close();
+                return;
+            default:
+                console.log('Choix invalide, veuillez réessayer.');
+                mvolaMenu();
+                break;
+        }    
+    });
 };
 
 codeMenu();
