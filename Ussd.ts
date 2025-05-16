@@ -34,7 +34,6 @@ const menuYas = () => {
     rl.question('Entrez votre choix : ', (choix) => {
         switch (choix) {
             case '1':
-                console.log('MVOLA');
                 mvolaMenu();
                 break;
             case '2':
@@ -111,7 +110,7 @@ const suivanteMenuYas = () => {
 
 const mvolaMenu = () => {
     const rl = createReadlineInterface();
-    console.log(' MVOLA');
+    console.log(' ---MVOLA---');
     console.log('1. Acheter Credit ou Offre Yas');
     console.log('2. transferer argent (vers toute destination)');
     console.log('3. MVOLA Credit ou Epargne');
@@ -123,7 +122,7 @@ const mvolaMenu = () => {
         switch (choix) {
             case '1':
                 console.log('Acheter Credit ou Offre Yas');
-                mvolaMenu();
+                mvolaMenu_1();
                 break;
             case '2':
                 console.log('transferer argent (vers toute destination)');
@@ -155,7 +154,7 @@ const mvolaMenu = () => {
 
 const mvolaMenuSuivante = () => {
     const rl = createReadlineInterface();
-    console.log(' MVOLA');
+    console.log(' ---MVOLA---');
     console.log('5. Paiement de Facture & Partenaire');
     console.log('6. Mon Compte');
     console.log('7. Recevoir de l\'argent');
@@ -203,5 +202,109 @@ const mvolaMenuSuivante = () => {
     });
     
 };
+
+const mvolaMenu_1 = () => {
+    const rl = createReadlineInterface();
+    console.log(' ACHATER CREDIT OU OFFRE YAS');
+    console.log('1. Achat pour mon numero');
+    console.log('2. Achat pour un autre numero');
+    console.log('3. Offre pour mon numero');
+    console.log('4. Offre pour un autre numero');
+    console.log('0. Page precedente');
+    console.log('00. Quitter');
+
+    rl.question('Entrez votre choix : ', (choix) => {
+        switch (choix) {
+            case '1':
+                console.log('Achat pour mon numero');
+                mvolaMenu_1_1();
+                break;
+            case '2':
+                console.log('Achat pour un autre numero');
+                mvolaMenu_1();
+                break;
+            case '3':
+                console.log('Offre pour mon numero');
+                mvolaMenu_1();
+                break;
+            case '4':
+                console.log('Offre pour un autre numero');
+                mvolaMenu_1();
+                break;
+            case '0':
+                console.log('Page precedente');
+                mvolaMenu();
+                break;
+            case '00':
+                console.log('Quitter...');
+                rl.close();
+                return;
+            default:
+                console.log('Choix invalide, veuillez réessayer.');
+                mvolaMenu_1();
+                break;
+        }
+    });
+};
+
+
+const mvolaMenu_1_1 = () => {
+    
+    const rl = createReadlineInterface();
+    console.log(' Credit a envoyer');
+    console.log('1. Recharger directement');
+    console.log('2. Code recharge');
+    console.log('*. Page precedente');
+    console.log('**. Menu principal');
+    console.log('00. Quitter');
+
+    rl.question('Entrez votre choix : ', (choix) => {
+        switch (choix) {
+            case '1':
+                console.log('Recharger directement');
+                mvolaMenu_1_1_1();
+                break;
+            case '2':
+                console.log('Code recharge');
+                mvolaMenu_1_1();
+                break;
+            case '*':
+                console.log('Page precedente');
+                mvolaMenu_1();
+                break;
+            case '**':
+                console.log('Menu principal');
+                menuYas();
+                break;
+            case '00':
+                console.log('Quitter...');
+                rl.close();
+                return;
+            default:
+                console.log('Choix invalide, veuillez réessayer.');
+                mvolaMenu_1_1();
+                break;
+        }
+    });
+
+};
+
+const mvolaMenu_1_1_1 = () => {
+
+    const rl = createReadlineInterface();
+    rl.question('Entrez le montant: ', (montant) => {
+        const montantNumber = parseFloat(montant);
+        if (isNaN(montantNumber) || montantNumber <= 0) {
+            console.log('Montant invalide, veuillez réessayer.');
+            mvolaMenu_1_1_1();
+        } else {
+            console.log(`Vous avez credité votre compte de ${montantNumber} Ariary via MVOLA`);
+            console.log('Merci d\'avoir utilisé MVOLA');
+            rl.close();
+        }
+    }
+    );
+
+}; 
 
 codeMenu();
